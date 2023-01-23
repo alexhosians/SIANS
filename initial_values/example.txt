@@ -1,0 +1,89 @@
+# Example input file of the main program.
+# All hashtags are treated as comments. 
+# Must contain timespan t_start and t_end, number of computation points N and ellipsoid parameters
+# Other required parameters include:
+# ntol: Tolerance of for numerical method, used for adaptive time stepping. 0 sets default which varies with the numerical method.
+# iabstol: Absolute integration tolerance, used as a tolerance check for adaptive quadrature.
+# ireltol: Relative integration tolerance, used as a tolerance check for adaptive quadrature.
+# quadval: Sets the integration rule. Takes values from 1 to 6. Higher order is more accurate but slower. Default 1.
+#          See https://www.gnu.org/software/gsl/doc/html/integration.html#c.gsl_integration_qag for more info.
+# quadval and itol can be reduced in case GSL integrator raises a roundoff error.
+# quadnode: Sets the number of nodes needed for the Fixed Legendre Quadrature. Must be larger than 2 and an integer.
+# hmax: Maximum step increase for adaptive time stepper. Should take values 1.5 to 5. Default 1.5.
+# hmin: Minimum step size the integrator can take. Note, lower hmin can possibly result to longer runtimes. Default 1e-3.
+# kepler: Determines whether Kepler variables are used as input or Cartesian coordinates. If 0, uses Cartesian (default), if 1 uses Keplerian.
+# sun: Determines whether the Sun is included in the simulation or not. If 0, the Sun is not included.
+# density: Determines whether the input masses are considered mass or density
+# The Sun is not considered as an additional body, but acts with a gravitational force as an external force.
+
+# Ellipsoids should also have mass, semiaxes, velocities, positions, angular speeds and rotation angles
+# All values, except N, will be converted to float (double)
+# The masses should take units of Kg (kilogram).
+# The masses, as well as the gravitational constant, will then be scaled based on the largest mass of the bodies.
+# For example, assume you have masses
+# M = [5.47*1e30, 1.0*1e18, 2.0*1e19]
+# The mass scaling will be M_scaling = 1e30, such that
+# M_scaled = M/M_scaling
+# The gravitational constant will therefore be
+# G = 6.674*1e11 * 1e30 m^3/(M_scale s^2)
+
+# Mass values must be greater than 0
+# Semiaxes values must be greater than 0
+# Input for angles are assumed to be in radians
+# Can use pi values as input or even multply/divide with other values
+# Can also use exponents, must be in the form 1e-K or 1eK, where K is an integer.
+# Note, only one division allowed!
+# Examples:
+# 1) pi/64
+# 2) 3*pi/2
+# 3) (3*pi)/2
+# 4) (3*pi)/(2*2)
+# 5) -pi/(8*2) 
+# 6) 1e-3
+# 7) 2*1e30
+# 8) (2.0*pi)/(2*1e-3)
+
+# ========================= Example data starts here 
+### Global parameeters
+t_end: 200
+N: 1000
+ntol: 0
+iabstol: 1.0e-08
+ireltol: 1.0e-08
+quadval: 6
+hmax: 1.5
+hmin: 0.4
+kepler: 0
+sun: 0
+density: 0
+
+### Each new line adds an extra body
+### Do not remove the lines with @
+### Ordering of @ must be: masses, semiaxes (or polyhedron file), positions, velocities, angles, angular velocities, and BID.
+@ Masses (or densities if density: 1 above)
+20.0
+2.0
+
+@ Semiaxes (a,b,c) or polyhedron file
+10.0 7.0 5.0
+1.0 0.7 0.5
+
+@ Positions (x,y,z) or (ascending node, longitude of perihelion, mean longitude)
+0.0 0.0 0.0
+40.0 0.0 1.0
+
+@ Velocities (vx, vy, vz)  or  (period, eccentricity, inclination)
+0.0 0.0 0.0
+0.0 0.7 0.0
+
+@ Angles (phi, theta, psi)
+0.0 0.0 0.0
+0.0 0.0 0.0
+
+@ Angular velocities (omega_x, omega_y, omega_z)
+0.0 0.0 0.0
+0.0 0.0 0.0
+
+@ BID (only required if kepler > 0)
+0
+1
