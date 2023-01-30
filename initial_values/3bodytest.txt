@@ -1,0 +1,52 @@
+# Simple 3 body test
+
+### Global parameeters
+t_end: 400
+N: 500
+ntol: 0
+iabstol: 1e-5
+ireltol: 1e-5
+quadval: 5
+hmax: 1.5
+hmin: 1e-5
+kepler: 0
+sun: 0
+density: 0
+
+### Each new line adds an extra body
+### Do not remove the lines with @
+### Ordering of @ must be: masses, semiaxes (or polyhedron file), positions, velocities, angles, angular velocities, BID and body names.
+@ Masses (or densities if density: 1 above)
+5.0
+2.0
+1.0
+   
+@ Semiaxes (a,b,c) or polyhedron file
+ 1.0 0.7 0.25
+ 0.6 0.6 0.4
+ 0.3 0.3 0.2
+
+@ Positions (x,y,z) or (ascending node, longitude of perihelion, mean longitude)
+ 0.0 0.0 0.0
+ 14.0 0.0 0.0
+ 18.0 5.0 1.0
+
+@ Velocities (vx, vy, vz)  or  (period, eccentricity, inclination)
+0.0 0.0 0.0
+0.0 -0.8 0.0
+-1.0 0.6 0.0
+
+@ Angles (phi, theta, psi)
+0.0 0.0 0.0
+0.0 0.0 0.0
+0.0 0.0 0.0
+
+@ Angular velocities (omega_x, omega_y, omega_z)
+0.0 0.0 0.0
+0.0 0.0 0.0
+0.0 0.0 0.0
+
+@ BID (only required if kepler > 0)
+0
+0
+0
