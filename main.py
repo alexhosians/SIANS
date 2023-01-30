@@ -787,11 +787,11 @@ if __name__ == '__main__':
 	# Useful to recompute everything from scratch
 	if parsed_arguments.DeletePickle:
 		if os.path.isdir(data_output_dir):
-			print("!!WARNING: Will delete pickle file from a previous run. \n" +
+			print("!!WARNING: Will delete the save files from a previous run. \n" +
 				  "You have 5 seconds to cancel if this is not what you intended")
 			time.sleep(5)
 			shutil.rmtree(data_output_dir, ignore_errors=True)  # Remove data folder if called
-			print("Previous pickle data deleted. Recomputing everything...")
+			print("Previous save files deleted. Recomputing everything...")
 		else:
 			print(data_output_dir, " does not exist. Nothing to delete!")
 	main(parsed_arguments, data_output_dir)
