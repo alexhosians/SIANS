@@ -12,4 +12,4 @@ The program is written in both Python 3.6 (or greater) and Cython. It is assumed
 
 If you make use of this software for your research, we ask you to cite the following paper:
 
-Alex Ho, Margrethe Wold, Mohammad Poursina, John T. Conway, "On the accuracy of mutual potential approximations in simulations of binary asteroids", Astronomy & Astrophysics (in print)
+Alex Ho, Margrethe Wold, Mohammad Poursina, John T. Conway, "The accuracy of mutual potential approximations in simulations of binary asteroids", A&A, 671, A38 (2023), [https://doi.org/10.1051/0004-6361/202245552](https://doi.org/10.1051/0004-6361/202245552)
